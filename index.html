@@ -709,10 +709,10 @@ function scalePreviewStage(){
   const sc=document.getElementById('prevSc');
   const stage=document.getElementById('prevStage');
   const sw=sc.clientWidth, sh=sc.clientHeight - (ts.enabled?ts.height:0);
-  const scale=Math.min(sw/CW, sh/CH);
+  // Use "cover" scaling: fill the screen completely, cropping if needed
+  const scale=Math.max(sw/CW, sh/CH);
   stage.style.transform='scale('+scale+')';
   stage.style.transformOrigin='center center';
-  // reposition telop height
   document.getElementById('prevTWrap').style.height=ts.height+'px';
 }
 
